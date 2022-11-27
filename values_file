@@ -18,7 +18,6 @@ ANSWERS:
         funct: 'lambda a, b, c, d : a + b + c - d'
         variables: [interval_int, exact_value, interval_float, value_list]
 
-
     ANSWER_2:
         funct: 'lambda a: a * 2'
         variables: [ANSWER_1]

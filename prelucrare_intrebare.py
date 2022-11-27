@@ -1,7 +1,6 @@
 import math
-from yaml import safe_load_all, full_load, safe_load
+from yaml import safe_load
 from random import uniform, randint, choice
-from json import loads
 
 
 qsets = {}
@@ -93,6 +92,11 @@ def create_question_from_text_file(question_file, values_file):
             print(question)
             add_question_exam(question, vfile)
 
+'''
+am un dictionar care arata in urmatorul fel:
+    { qtype: {problems :[], childs : []}, qtype2 ...}
+    in probelme am problemele care apartin tipului acela si in childs am subtipurile acestui tip
+'''
 
 def find_suitable_questions(qtype):
     if not qsets[qtype]['childs']:
@@ -105,7 +109,9 @@ def find_suitable_questions(qtype):
 
      
 def run_program():
+    # quest_types este fisierul in care am stocat tipurile deja creeate in create_question
     compute_qsets('quest_types')
+
     possible_questions = find_suitable_questions('main_type')
     print(possible_questions)
     # aleg o intrebare si o localizez
