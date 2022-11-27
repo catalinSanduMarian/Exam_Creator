@@ -1,0 +1,29 @@
+exact_value: 6
+
+interval_int:
+    min: 15
+    max: 70
+    type: int
+
+interval_float:
+    min: 5
+    max: 7
+    type: float
+
+value_list: [1,2,34,56,100]
+
+
+ANSWERS:
+    ANSWER_1:
+        funct: 'lambda a, b, c, d : a + b + c - d'
+        variables: [interval_int, exact_value, interval_float, value_list]
+
+
+    ANSWER_2:
+        funct: 'lambda a: a * 2'
+        variables: [ANSWER_1]
+
+    ANSWER_3:
+        funct: 'lambda: math.sqrt(10)'
+        variables: []
+

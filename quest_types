@@ -1,0 +1,7 @@
+main_type:
+    childs: [subtip1]
+    problems: []
+
+subtip1:
+    childs: []
+    problems: [1,2,3,4]
