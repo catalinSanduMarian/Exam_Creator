@@ -1,7 +1,23 @@
 main_type:
-    childs: [subtip1]
+    childs: [subtip1, subtip2]
     problems: []
 
 subtip1:
-    childs: []
+    childs: [subtip4, subtip5]
     problems: [1,2,3,4]
+
+subtip2:
+    childs: [subtip5]
+    problems: [1, 2, 7, 5, 3]
+
+subtip3:
+    childs: []
+    problems: [10,20,30,40]
+
+subtip4:
+    childs: []
+    problems: [11,22,33,44,55]
+
+subtip5:
+    childs: []
+    problems: [0]

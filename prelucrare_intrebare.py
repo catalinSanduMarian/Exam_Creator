@@ -98,16 +98,18 @@ def find_suitable_questions(qtype):
     if not qsets[qtype]['childs']:
         return qsets[qtype]['problems']
     
+    child_problems = []
     for child in qsets[qtype]['childs']:
-        chilld_problems =  find_suitable_questions(child)
-    return qsets[qtype]['problems'] + chilld_problems
+        child_problems +=  find_suitable_questions(child)
+    return qsets[qtype]['problems'] + child_problems
 
      
 def run_program():
     compute_qsets('quest_types')
-    print (qsets)
-    print (find_suitable_questions('main_type'))
-    create_question_from_text_file('input_file', 'values_file')
+    possible_questions = find_suitable_questions('main_type')
+    print(possible_questions)
+    # aleg o intrebare si o localizez
+    # create_question_from_text_file('input_file', 'values_file')
     
 
 run_program()

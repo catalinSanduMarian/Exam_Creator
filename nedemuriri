@@ -4,3 +4,4 @@
 --- lambda functions 
 
 --- ar trebui sa fie rapida partea de load a sistemului de tipuri/subtipuri?
+    --- aditional: sterg duplicatele din lista 
