@@ -16,8 +16,10 @@ To exit type exit
 
 questions_dictonary = {}
 path_prefix = "/home/cata/Desktop/Exam_Creator/intrebari/"
+actual_question = ''
 
 
+# questions_dictonary e de forma: {q_name: subtipuri_qname}
 def load_question_dict():
     global questions_dictonary
     with open ('questions_dict') as qfile:
@@ -26,23 +28,45 @@ def load_question_dict():
         questions_dictonary = {}
     print(type(questions_dictonary))
 
+
 def show_question_dict():
     print (questions_dictonary)
 
-def create_folder(qname):
-    mkdir(path_prefix+qname)
+
+def create_question_directory(question_name):
+    dir_path = path_prefix+question_name
+    mkdir(dir_path)
+    open(dir_path+"/values.yaml", "x")
+    open(dir_path+"/question_text", "x")
     
-def create_question_directory():
-    q_name = input ("Chose question_name:\n")
-    if q_name in questions_dictonary:
+
+    return question_name
+
+
+def create_new_question():
+    global actual_question
+    actual_question = ""
+    question_name = input ("Chose question_name:\n")
+
+    if question_name in questions_dictonary:
         print ("name already used")
         # momentan nu facem nimic in cazul asta. Probabil cand o sa fac UX o sa fie ceva cu next care nu te lasa sau idk    
         return
-    create_folder(q_name)
-    questions_dictonary[q_name] = 'ceva'
+
+    create_question_directory(question_name)
+    questions_dictonary[question_name] = ['main']
+    actual_question = question_name
+    
 
 def open_question_directory():
-    print ("2")
+    global actual_question
+    actual_question = ""
+    
+    question_name = input("What question do you want to open?\n")
+    if question_name not in questions_dictonary:
+        print("not a valid question")
+        return
+    actual_question = question_name
 
 
 def update_question_text():
@@ -70,19 +94,27 @@ def menu():
     print(welcome_text)
     load_question_dict()
     
+    switch = {
+        "addq": create_new_question,
+        "open": open_question_directory,
+        "seeq": show_question_dict,
+
+
+
+
+        "exit": exit
+    }
+
+
     while True:
 
-        print(options_text, end='')
-        switch = {
-            "addq": create_question_directory,
-            "open": open_question_directory,
-            "seeq": show_question_dict,
+        print(options_text)
+        if actual_question:
+            print("now working on question %s" % actual_question)
+        else:
+            print("no question selected, please select a question")
 
 
-
-
-            "exit": exit
-        }
         func = switch.get(input(), invalid)
         func()
         print()

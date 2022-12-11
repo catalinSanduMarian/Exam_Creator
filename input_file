@@ -1,10 +1,11 @@
 un eleme cu exact_value {exact_value};
 interval_int {interval_int} 
 interval_float {interval_float}
-Raspunsul1 {ANSWER_1}
+Raspunsul1 {answer1}
 value_list {value_list}
 din_nou_interval_int {interval_int}
-Rasp2 {ANSWER_2}
+Rasp2 {answer2}
+R3 {answer3}
 incor_value {incor_value}
 din_nou_interval_int {interval_int}
 

@@ -12,30 +12,47 @@ def compute_qsets(questions_types_file):
         qsets = safe_load(qfile.read())
 
 def read_values(fp):
-    # values = munch.Munch()
     
     values = safe_load(fp.read())
-    # values.update(munch.munchify(new))
+    # functions = values.pop('Functions')
+    hidden_vals = values.pop('Hidden')
 
-    answers = values.pop('ANSWERS')
-    return values, answers
+    return values, hidden_vals
 
-def pick_value(var_range):
-    print(var_range)
+def pick_values_list_set(variable_dict, variable, values):
+    print(variable_dict)
+    if 'Dimension' not in variable_dict:
+        return compute_function(variable_dict, values)
+        
+    picked_index = randint(0, variable_dict['Dimension'] - 1)
+    
+    for elem in variable_dict:
+        if elem == 'Dimension':
+            continue
+        print(elem)
+        print (variable_dict[elem])
+        values[elem] = variable_dict[elem][picked_index]
+
+def pick_value(var_range, variable, values):
     match var_range:
         case int():
             return var_range
 
         case dict():
+            if 'min' not in var_range:
+                return pick_values_list_set(var_range, variable, values)
+                
+            print(var_range)
             minum = var_range['min']
             maxim = var_range['max']
-
             # if it's int we return an int
             if var_range['type'] == 'int':
                 return(randint (minum, maxim))
 
             # else we return a float
-            return uniform(minum, maxim)
+            precision = var_range['precision']
+
+            return round(uniform(minum, maxim), precision)
 
         case list():
             return choice(var_range)
@@ -47,41 +64,67 @@ def pick_value(var_range):
 def call_lambda_funct(funct, args):
     return eval(funct)(*args)
 
-def compute_answer(lambda_function, variable_names, values):
+def compute_function(lambda_function, values):
     var_values = []
+    funct_to_call = lambda_function['funct']
+    variable_names = lambda_function['variables'] 
+    return_values = lambda_function['returns']
+    precision = lambda_function['precision']
 
     for variable in variable_names:
         var_values.append(values[variable])
 
-    answer = call_lambda_funct(lambda_function, var_values)
-    return answer
+    answers = call_lambda_funct(funct_to_call, var_values)
+    print(answers)
+    print(return_values)
+    if type(answers) != type(list()):
+        # function with only 1 return
+        values[return_values[0]] = round(answers, precision)
+
+        return
+    
+    for answer, var_name in zip(answers, return_values):
+        print("AICI")
+        print(answer)
+        print(var_name)
+        values[var_name] = round(answer, precision)
+    
+    # return round(answer,precision)
     
 
-def calculate_answers(answer_dict, values):
+def calculate_functions(functions_dict, values):
 
-    for answer_name in answer_dict:
-        values[answer_name] = compute_answer(answer_dict[answer_name]['funct'], answer_dict[answer_name]['variables'], values)
+    for value_name in functions_dict:
+        compute_function(functions_dict[value_name], values)
 
 
-def create_values_from_variable_ranges(fp):
-    variable_ranges, answers = read_values(fp)
+def create_values_from_variable_ranges(variable_ranges):
     values = {}
     for variable in variable_ranges:
-        values[variable] = pick_value(variable_ranges[variable])
-    calculate_answers(answers, values)    
+        value = pick_value(variable_ranges[variable],variable, values)
+        if value:
+            values[variable] = value
+
     return values
 
 
-def create_question(question, values):
-    for value_names in values:
-        name = "{"+value_names+"}"
-        question = question.replace(name, str(values[value_names]))
+def create_question(question, values, is_hidden):
+    for value_name in values:
+        if value_name in is_hidden:
+            print(value_name)
+            # ar trb sa iau in calcul val, macar atunci cand generez ala de rasp calculate (gen sa mai trec o data prin noua intrebare doar cu val hidden)
+            continue
+        name = "{"+value_name+"}"
+        question = question.replace(name, str(values[value_name]))
     return question
 
 def add_question_exam(question, fp_values):
-    values = create_values_from_variable_ranges(fp_values)
-    question = create_question(question, values)
-    print(values)
+    variable_ranges, is_hidden = read_values(fp_values)
+    for i in range (2):
+        values = create_values_from_variable_ranges(variable_ranges)
+        question = create_question(question, values, is_hidden)
+        print("@")
+        print(values)
     print(question)
 
    
@@ -89,7 +132,6 @@ def create_question_from_text_file(question_file, values_file):
     with open(question_file) as qfile:
         with open (values_file, 'r') as vfile:
             question = qfile.read()
-            print(question)
             add_question_exam(question, vfile)
 
 '''
@@ -111,11 +153,11 @@ def find_suitable_questions(qtype):
 def run_program():
     # quest_types este fisierul in care am stocat tipurile deja creeate in create_question
     compute_qsets('quest_types')
-
+    # for i in range (100 * 20):
     possible_questions = find_suitable_questions('main_type')
-    print(possible_questions)
+    # print(possible_questions)
     # aleg o intrebare si o localizez
-    # create_question_from_text_file('input_file', 'values_file')
+    create_question_from_text_file('input_file', 'values_file')
     
 
 run_program()

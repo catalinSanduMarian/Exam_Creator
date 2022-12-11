@@ -1,0 +1,84 @@
+{'min': 15, 'max': 70, 'type': 'int'}
+{'min': 5, 'max': 7, 'type': 'float', 'precision': 3}
+{'funct': 'lambda a, b, c, d : [1, a + b + c - d]', 'variables': ['interval_int', 'exact_value', 'interval_float', 'value_list'], 'returns': ['aaa', 'answer1'], 'precision': 2}
+[1, 16.421999999999997]
+['aaa', 'answer1']
+AICI
+1
+aaa
+AICI
+16.421999999999997
+answer1
+{'Dimension': 3, 'elem1': [1, 2, 3], 'elem2': [1, 2, 3], 'elem3': [1, 2, 3]}
+elem1
+[1, 2, 3]
+elem2
+[1, 2, 3]
+elem3
+[1, 2, 3]
+{'funct': 'lambda a: [1,a * 2]', 'variables': ['answer1'], 'returns': ['ceva', 'answer2'], 'precision': 1}
+[1, 32.84]
+['ceva', 'answer2']
+AICI
+1
+ceva
+AICI
+32.84
+answer2
+{'funct': 'lambda: math.sqrt(10)', 'variables': [], 'returns': ['answer3'], 'precision': 0}
+3.1622776601683795
+['answer3']
+exact_value
+answer2
+@
+{'exact_value': 6, 'interval_int': 60, 'interval_float': 6.422, 'value_list': 56, 'aaa': 1, 'answer1': 16.42, 'elem1': 3, 'elem2': 3, 'elem3': 3, 'ceva': 1, 'answer2': 32.8, 'answer3': 3.0}
+{'min': 15, 'max': 70, 'type': 'int'}
+{'min': 5, 'max': 7, 'type': 'float', 'precision': 3}
+{'funct': 'lambda a, b, c, d : [1, a + b + c - d]', 'variables': ['interval_int', 'exact_value', 'interval_float', 'value_list'], 'returns': ['aaa', 'answer1'], 'precision': 2}
+[1, 28.224]
+['aaa', 'answer1']
+AICI
+1
+aaa
+AICI
+28.224
+answer1
+{'Dimension': 3, 'elem1': [1, 2, 3], 'elem2': [1, 2, 3], 'elem3': [1, 2, 3]}
+elem1
+[1, 2, 3]
+elem2
+[1, 2, 3]
+elem3
+[1, 2, 3]
+{'funct': 'lambda a: [1,a * 2]', 'variables': ['answer1'], 'returns': ['ceva', 'answer2'], 'precision': 1}
+[1, 56.44]
+['ceva', 'answer2']
+AICI
+1
+ceva
+AICI
+56.44
+answer2
+{'funct': 'lambda: math.sqrt(10)', 'variables': [], 'returns': ['answer3'], 'precision': 0}
+3.1622776601683795
+['answer3']
+exact_value
+answer2
+@
+{'exact_value': 6, 'interval_int': 18, 'interval_float': 5.224, 'value_list': 1, 'aaa': 1, 'answer1': 28.22, 'elem1': 2, 'elem2': 2, 'elem3': 2, 'ceva': 1, 'answer2': 56.4, 'answer3': 3.0}
+un eleme cu exact_value {exact_value};
+interval_int 60 
+interval_float 6.422
+Raspunsul1 16.42
+value_list 56
+din_nou_interval_int 60
+Rasp2 {answer2}
+R3 3.0
+incor_value {incor_value}
+din_nou_interval_int 60
+
+
+
+
+
+

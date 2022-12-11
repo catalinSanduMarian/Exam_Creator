@@ -26,8 +26,8 @@ pentru fiecare varianta_examen
     --- aleg o pb din subsetul de pb corect -> done
     --- incarc problema din folderul ei, citind cele 2 fisiere aferente (fieserul text si fisierul values). -> done
     --- Aleg valori pt variabile -> done
-    --- calculez raspunsurile -> done
-
+    --- calculez functiile -> done
+    --- 2 tipuri de variabile: hidden si normal -> default sunt normale
 
 
 
