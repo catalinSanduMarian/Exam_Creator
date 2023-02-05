@@ -4,9 +4,11 @@ interval_float {interval_float}
 Raspunsul1 {answer1}
 value_list {value_list}
 din_nou_interval_int {interval_int}
-Rasp2 {answer2}
+Aici se asteapta Rasp2 {answer2}
 R3 {answer3}
-incor_value {incor_value}
+elem1 {elem1}
+elem2 {elem2}
+elem3 {elem3}
 din_nou_interval_int {interval_int}
 
 

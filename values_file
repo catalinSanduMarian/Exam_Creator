@@ -20,16 +20,16 @@ F1:
     precision: 2
 
 
-value_array:
+tuplu1:
     Dimension: 3
     elem1: [1,2,3]
-    elem2: [1,2,3]
-    elem3: [1,2,3]
+    elem2: [2,4,6]
+    elem3: [3,6,9]
 
 
 
 F2:
-    funct: 'lambda a: [1,a * 2]'
+    funct: 'lambda a: [1, a * 2]'
     variables: [answer1]
     returns: [ceva, answer2]
     precision: 1
@@ -38,6 +38,6 @@ F3:
     funct: 'lambda: math.sqrt(10)'
     variables: []
     returns: [answer3]
-    precision: 0
+    precision: 3
 
-Hidden: answer2, exact_value
+Hidden: answer2, answer3

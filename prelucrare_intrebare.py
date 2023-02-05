@@ -20,17 +20,14 @@ def read_values(fp):
     return values, hidden_vals
 
 def pick_values_list_set(variable_dict, variable, values):
-    print(variable_dict)
     if 'Dimension' not in variable_dict:
         return compute_function(variable_dict, values)
         
     picked_index = randint(0, variable_dict['Dimension'] - 1)
-    
+
     for elem in variable_dict:
         if elem == 'Dimension':
             continue
-        print(elem)
-        print (variable_dict[elem])
         values[elem] = variable_dict[elem][picked_index]
 
 def pick_value(var_range, variable, values):
@@ -41,8 +38,7 @@ def pick_value(var_range, variable, values):
         case dict():
             if 'min' not in var_range:
                 return pick_values_list_set(var_range, variable, values)
-                
-            print(var_range)
+        
             minum = var_range['min']
             maxim = var_range['max']
             # if it's int we return an int
@@ -51,7 +47,7 @@ def pick_value(var_range, variable, values):
 
             # else we return a float
             precision = var_range['precision']
-
+        
             return round(uniform(minum, maxim), precision)
 
         case list():
@@ -75,8 +71,6 @@ def compute_function(lambda_function, values):
         var_values.append(values[variable])
 
     answers = call_lambda_funct(funct_to_call, var_values)
-    print(answers)
-    print(return_values)
     if type(answers) != type(list()):
         # function with only 1 return
         values[return_values[0]] = round(answers, precision)
@@ -84,9 +78,6 @@ def compute_function(lambda_function, values):
         return
     
     for answer, var_name in zip(answers, return_values):
-        print("AICI")
-        print(answer)
-        print(var_name)
         values[var_name] = round(answer, precision)
     
     # return round(answer,precision)
@@ -111,7 +102,7 @@ def create_values_from_variable_ranges(variable_ranges):
 def create_question(question, values, is_hidden):
     for value_name in values:
         if value_name in is_hidden:
-            print(value_name)
+            print("aici am val hidden: %f %s" % (values[value_name], value_name))
             # ar trb sa iau in calcul val, macar atunci cand generez ala de rasp calculate (gen sa mai trec o data prin noua intrebare doar cu val hidden)
             continue
         name = "{"+value_name+"}"
@@ -120,11 +111,8 @@ def create_question(question, values, is_hidden):
 
 def add_question_exam(question, fp_values):
     variable_ranges, is_hidden = read_values(fp_values)
-    for i in range (2):
-        values = create_values_from_variable_ranges(variable_ranges)
-        question = create_question(question, values, is_hidden)
-        print("@")
-        print(values)
+    values = create_values_from_variable_ranges(variable_ranges)
+    question = create_question(question, values, is_hidden)
     print(question)
 
    

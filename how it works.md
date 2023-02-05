@@ -27,7 +27,8 @@ pentru fiecare varianta_examen
     --- incarc problema din folderul ei, citind cele 2 fisiere aferente (fieserul text si fisierul values). -> done
     --- Aleg valori pt variabile -> done
     --- calculez functiile -> done
-    --- 2 tipuri de variabile: hidden si normal -> default sunt normale
+    --- 2 tipuri de variabile: hidden si normal -> default sunt normale -> done
+    --- generez 2 examene (sau un examen si un aswer sheet?) si le printez pe ambele
 
 
 
