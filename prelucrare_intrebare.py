@@ -1,11 +1,11 @@
 import math
-from yaml import safe_load
+from yaml import safe_loadc
 from random import uniform, randint, choice
 
 
 qsets = {}
 
-def compute_qsets(questions_types_file):
+def compute_qsets(questions_types_file):    
     global qsets
 
     with open(questions_types_file) as qfile:

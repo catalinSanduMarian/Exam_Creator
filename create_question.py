@@ -20,6 +20,11 @@ questions_dictionary = {}
 path_prefix = "/home/cata/Desktop/Exam_Creator/intrebari/"
 questions_path = path_prefix + 'questions_dict'
 
+def set_questions_path():
+    global questions_path
+    questions_path = path_prefix + 'questions_dict'
+
+
 actual_question = ''
 
 def save_dictionary():
@@ -34,19 +39,22 @@ def check_exam_dir():
         print('Please create a correct exam directory first')
         create_exam_directory()
 
-
 def create_exam_directory():
     dir_path = input ("Chose exam directory path (absolute):\n")
     try:
         mkdir(dir_path)
     # fix message to be coding styleble
+    except FileExistsError as e:
+        print('loding data from directory "%s"' % dir_path)
+
     except FileNotFoundError as e:
-        print ('failed to create directory "%s"'% dir_path)
+        print ('failed to create directory "%s"' % dir_path)
         return
     global path_prefix
     if dir_path[len(dir_path)-1] != '/':
         dir_path += '/'
     path_prefix = dir_path
+    set_questions_path()
     load_question_dict()
 
 
@@ -56,7 +64,9 @@ def load_question_dict():
     try:
         stat (questions_path)
     except FileNotFoundError as e:
-        open (questions_path, "a")
+        f = open (questions_path, "x")
+        f.close()
+        
 
     with open (questions_path, "r") as qfile:
         questions_dictionary = safe_load(qfile.read())
@@ -68,18 +78,22 @@ def load_question_dict():
 def show_question_dict():
     print (questions_dictionary)
 
-
-def create_question_directory(question_name):
+def check_prefix_path():
     try:
         stat(path_prefix)
     # fix message to be coding styleble
     except FileNotFoundError as e:
-        print ('directory "%s" not found. Modify your settings to an existing\
-            directory or create a new problems directory using commnad create_exam_dir' % path_prefix)
+        print ('directory "%s" not found. Modify your settings to an existing'\
+            ' directory or create a new problems directory using commnad create_exam_dir' % path_prefix)
+        return 1
+    return 0
+
+
+def create_question_directory(question_name):
+    if check_prefix_path():
         return 1
 
-
-    dir_path = path_prefix+question_name
+    dir_path = path_prefix + question_name
 
     try:
         mkdir(dir_path)
@@ -87,8 +101,10 @@ def create_question_directory(question_name):
         print ('name already used')
         return 1
 
-    open(dir_path+"/values.yaml", "x")
-    open(dir_path+"/question_text", "x")
+    f = open(dir_path+"/values.yaml", "x")
+    f.close()
+    f = open(dir_path+"/question_text", "x")
+    f.close()
     return 0
 
 
@@ -136,15 +152,36 @@ def delete_question():
     save_dictionary()
 
     
-def update_question_text():
-    print ("3")
+def update_question_text(question, new_text):
+    if not question:
+        print("Question name can't be empty")
+        return
+    
+    if question not in questions_dictionary:
+        print("Question not found in the questions list. Please make sure you"\
+                " introduced the corect name")
+        return
+    check_prefix_path()
+    dir_path = path_prefix + question
+    try:
+        f = open(dir_path+"/question_text", "w")
 
-
+    except FileNotFoundError as e:
+        print("Question text not found, creating a new file")
+        f = open(dir_path+"/question_text", "x")
+    print(new_text, file=f)
+    
+def modify_text():
+    
+    if not actual_question:
+        print("Question name can't be empty")
+        return
+    
+    text = input ("type new text")
+    update_question_text(actual_question, text)
 
 def update_question_variables():
     print ("4")
-
-
 
 def update_question_answers():
     print ("5")
@@ -168,7 +205,7 @@ def menu():
         "seeq": show_question_dict,
         "create_exam_dir": create_exam_directory,
         "del": delete_question,
-
+        "modt": modify_text,
 
         "exit": exit
     }
