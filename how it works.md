@@ -28,7 +28,9 @@ pentru fiecare varianta_examen
     --- Aleg valori pt variabile -> done
     --- calculez functiile -> done
     --- 2 tipuri de variabile: hidden si normal -> default sunt normale -> done
-    --- generez 2 examene (sau un examen si un aswer sheet?) si le printez pe ambele
+    --- generez 2 examene (sau un examen si un aswer sheet?) si le printez pe ambele --- later
+
+
 
 
 

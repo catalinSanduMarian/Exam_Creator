@@ -21,10 +21,10 @@ F1:
 
 
 tuplu1:
-    tuple:
-        elem1: [1,2,3,4,5,6,7]
-        elem2: [2,4,6,8,10,12,14]
-        elem3: [3,6,9,12,15,18,21]
+    Dimension: 3
+    elem1: [1,2,3]
+    elem2: [2,4,6]
+    elem3: [3,6,9]
 
 
 F2:
@@ -40,3 +40,4 @@ F3:
     precision: 3
 
 Hidden: [answer2, answer3]
+

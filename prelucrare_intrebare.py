@@ -1,5 +1,5 @@
 import math
-from yaml import safe_loadc
+from yaml import safe_load
 from random import uniform, randint, choice
 
 
@@ -20,15 +20,14 @@ def read_values(fp):
     return values, hidden_vals
 
 def pick_values_list_set(variable_dict, variable, values):
-    if 'Dimension' not in variable_dict:
+    if 'tuple' not in variable_dict:
         return compute_function(variable_dict, values)
-        
-    picked_index = randint(0, variable_dict['Dimension'] - 1)
-
-    for elem in variable_dict:
-        if elem == 'Dimension':
-            continue
-        values[elem] = variable_dict[elem][picked_index]
+    
+    tpl = variable_dict['tuple']
+    #                             lungimea primului elem din dictionar
+    picked_index = randint(0, len(tpl[next(iter(tpl))]) - 1)
+    for elem in tpl:
+        values[elem] = tpl[elem][picked_index]
 
 def pick_value(var_range, variable, values):
     match var_range:

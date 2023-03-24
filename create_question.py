@@ -27,6 +27,19 @@ def set_questions_path():
 
 actual_question = ''
 
+
+def check_question(question):
+    if not question:
+        print("Question name can't be empty")
+        return -1
+    
+    if question not in questions_dictionary:
+        print("Question not found in the questions list. Please make sure you"\
+                " introduced the corect name")
+        return -2
+
+    return 0
+
 def save_dictionary():
     with open(questions_path, "w") as qfile:
         qfile.write(dump(questions_dictionary)) 
@@ -64,8 +77,8 @@ def load_question_dict():
     try:
         stat (questions_path)
     except FileNotFoundError as e:
-        f = open (questions_path, "x")
-        f.close()
+        fp = open (questions_path, "x")
+        fp.close()
         
 
     with open (questions_path, "r") as qfile:
@@ -101,10 +114,10 @@ def create_question_directory(question_name):
         print ('name already used')
         return 1
 
-    f = open(dir_path+"/values.yaml", "x")
-    f.close()
-    f = open(dir_path+"/question_text", "x")
-    f.close()
+    fp = open(dir_path+"/values.yaml", "x")
+    fp.close()
+    fp = open(dir_path+"/question_text", "x")
+    fp.close()
     return 0
 
 
@@ -153,24 +166,18 @@ def delete_question():
 
     
 def update_question_text(question, new_text):
-    if not question:
-        print("Question name can't be empty")
-        return
-    
-    if question not in questions_dictionary:
-        print("Question not found in the questions list. Please make sure you"\
-                " introduced the corect name")
-        return
+    check_question(question)
     check_prefix_path()
     dir_path = path_prefix + question
     try:
-        f = open(dir_path+"/question_text", "w")
+        fp = open(dir_path+"/question_text", "w")
 
     except FileNotFoundError as e:
         print("Question text not found, creating a new file")
-        f = open(dir_path+"/question_text", "x")
-    print(new_text, file=f)
-    
+        fp = open(dir_path+"/question_text", "x")
+    print(new_text, file=fp)
+    fp.close()
+
 def modify_text():
     
     if not actual_question:
@@ -180,11 +187,30 @@ def modify_text():
     text = input ("type new text")
     update_question_text(actual_question, text)
 
-def update_question_variables():
-    print ("4")
+# asta e f grea o facem candva
+def update_question_variables(question):
+    check_question(question)
+    check_prefix_path()
+    dir_path = path_prefix + question
+    try:
+        fp = open(dir_path+"/values.yaml", "r+")
 
-def update_question_answers():
-    print ("5")
+    except FileNotFoundError as e:
+        print("Question text not found, creating a new file")
+        fp = open(dir_path+"/values.yaml", "x")
+    values = safe_load(fp.read())
+    fp.close()
+    print(values)
+    
+def modify_variables():
+    
+    if not actual_question:
+        print("Question name can't be empty")
+        return
+    
+    # text = input ("type new vars ig")
+    update_question_variables(actual_question)
+
 
 def update_question_type():
     print ("6")
@@ -206,6 +232,9 @@ def menu():
         "create_exam_dir": create_exam_directory,
         "del": delete_question,
         "modt": modify_text,
+        "modv": modify_variables,
+
+
 
         "exit": exit
     }
