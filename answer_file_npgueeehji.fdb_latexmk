@@ -1,0 +1,21 @@
+# Fdb version 3
+["pdflatex"] 1693280732 "output/latex_files/answer_file_npgueeehji.tex" "answer_file_npgueeehji.pdf" "answer_file_npgueeehji" 1693280732
+  "/etc/texmf/web2c/texmf.cnf" 1693267588 475 c0e671620eb5563b2130f56340a5fde8 ""
+  "/home/cata/.texlive2022/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk" 1693271398 11524 0bcb48aed937168acadd218b9d4c5430 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/base/article.cls" 1654720880 20144 7555b7429d80bef287ebb82117811acc ""
+  "/usr/share/texlive/texmf-dist/tex/latex/base/exam.cls" 1693269237 292471 cf61070d137ac4d18fa1ab3aa514381e ""
+  "/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty" 1654720880 5319 48d7f3cfa322abd2788e3c09d624b922 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo" 1654720880 8448 e0391042ca0932ede1098ae14ada60ba ""
+  "/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def" 1656792629 31050 293f2cc98a3575c4228b5157bf850b8f ""
+  "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1658757727 39561 34c98e380bf7c7201ee6a7909aff625a ""
+  "/usr/share/texmf/web2c/texmf.cnf" 1658757727 39561 34c98e380bf7c7201ee6a7909aff625a ""
+  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1693267601 75955 f78456fd1308dc295dc476a68e28d85b ""
+  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1693267604 1444173 b14ba9235d1496bb8e519657dc3d9337 ""
+  "answer_file_npgueeehji.aux" 1693280732 329 cfca87d27653727961d59512c05144d8 "pdflatex"
+  "output/latex_files/answer_file_npgueeehji.tex" 1693279810 652 e2745401b4d4fbfb79e4a0cb9162b2dd ""
+  (generated)
+  "answer_file_npgueeehji.aux"
+  "answer_file_npgueeehji.log"
+  "answer_file_npgueeehji.pdf"

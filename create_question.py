@@ -56,7 +56,6 @@ def create_exam_directory():
     dir_path = input ("Chose exam directory path (absolute):\n")
     try:
         mkdir(dir_path)
-    # fix message to be coding styleble
     except FileExistsError as e:
         print('loding data from directory "%s"' % dir_path)
 
@@ -116,7 +115,7 @@ def create_question_directory(question_name):
 
     fp = open(dir_path+"/values.yaml", "x")
     fp.close()
-    fp = open(dir_path+"/question_text", "x")
+    fp = open(dir_path+"/question_text.tex", "x")
     fp.close()
     return 0
 

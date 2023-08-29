@@ -4,20 +4,24 @@ main_type:
 
 subtip1:
     childs: [subtip4, subtip5]
-    problems: [1,2,3,4]
+    problems: [question2, question3, question6, question10, question15, question7, question19, question21, question23, question41, question44]
 
 subtip2:
-    childs: [subtip5]
-    problems: [1, 2, 7, 5, 3]
+    childs: [main_type]
+    problems: [question2, question3, question6, question10, question15, question7, question19, question21, question23, question41, question44]
 
 subtip3:
     childs: []
-    problems: [10,20,30,40]
+    problems: [question11, question13, question16, question13, question25, question17, question29, question31, question33, question42, question14]
 
 subtip4:
     childs: []
-    problems: [11,22,33,44,55]
+    problems: [question4, question6, question12, question20, question30, question14, question38, question42, question46, question21, question22]
 
 subtip5:
     childs: []
-    problems: [0]
+    problems: [question6, question9, question18, question30, question45, question21, question5, question25, question35, question45, question46]
+
+subtip6:
+    childs: []
+    problems: [question1, question2, question4, question6, question8, question18, question28, question34, question49, question48, question14]

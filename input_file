@@ -1,17 +1,12 @@
-un eleme cu exact_value {exact_value};
-interval_int {interval_int} 
-interval_float {interval_float}
-Raspunsul1 {answer1}
-value_list {value_list}
-din_nou_interval_int {interval_int}
-Aici se asteapta Rasp2 {answer2}
-R3 {answer3}
-elem1 {elem1}
-elem2 {elem2}
-elem3 {elem3}
-din_nou_interval_int {interval_int}
-
-
-
-
-
+un eleme cu exactvalue [*exactvalue*]\\
+intervalint [*intervalint*] \\
+intervalfloat [*intervalfloat*]\\
+Raspunsul1 [*answer1*]\\
+valuelist [*valuelist*]\\
+dinnouintervalint [*intervalint*]\\   
+Aici se asteapta Rasp2 [*answer2*]\\
+R3 [*answer3*]\\
+elem1 [*elem1*]\\
+elem2 [*elem2*]\\
+elem3 [*elem3*]\\
+dinnouintervalint [*intervalint*]\\
