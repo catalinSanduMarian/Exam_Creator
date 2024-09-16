@@ -1,0 +1,69 @@
+nr: 2981
+F0:
+    funct: 'lambda nr: [seed(nr)]'
+    variables: [nr]
+    returns: [ignore1]
+    precision: 0
+
+exactvalue: 6
+
+intervalint:
+    min: 15
+    max: 70
+    type: int
+
+intervalfloat:
+    min: 5
+    max: 7
+    type: float
+    precision: 3
+
+valuelist: [1,2,34,56,100]
+
+tuplu1:
+    tuple:
+        elem1: [1,2,3,4,5,6,7]
+        elem2: [2,4,6,8,10,12,14]
+        elem3: [3,6,9,12,15,18,21]
+
+hidAnsw: 4
+
+F1:
+    funct: 'lambda a, b: [a+b]'
+    variables: [exactvalue, intervalint]
+    returns: [answer1]
+    precision: 3
+
+F2:
+    funct: 'lambda a, b: [a-b]'
+    variables: [elem1, intervalfloat]
+    returns: [answer2]
+    precision: 3
+
+F3:
+    funct: 'lambda a, b: [a-b]'
+    variables: [valuelist, elem3]
+    returns: [answer3]
+    precision: 3
+
+
+
+rez: 'exactvalue {}; intervalint {}; intervalfloat {}; valuelist {}; elem1 {}; elem2 {}; elem3 {}; hidAnsw {}; answer1 {}; answer2 {}; answer3 {};'
+
+F4:   
+    funct: 'lambda exactvalue, intervalint, intervalfloat, valuelist, elem1, elem2, elem3, hidAnsw, answer1, answer2, answer3, rez: [rez.format(exactvalue, intervalint, intervalfloat, valuelist, elem1, elem2, elem3, hidAnsw, answer1, answer2, answer3)]'
+    variables: [exactvalue, intervalint, intervalfloat, valuelist, elem1, elem2, elem3, hidAnsw, answer1, answer2, answer3, rez]
+    returns: [text]
+    precision: 0
+
+cmd: 'echo "{}" > out_rez'
+
+F5:
+    funct: 'lambda text, cmd: [system(cmd.format(text))]'
+    variables: [text, cmd]
+    returns: [ceva, nu]
+    precision: 0
+
+
+
+Hidden: [hidAnsw]

@@ -1,0 +1,12 @@
+tuplu1:
+    tuple:
+        I: [1,2,3,4,5,6,7]
+        U: [2,30,30,8,10,18,28]
+
+F3:
+    funct: 'lambda a,b: a/b'
+    variables: [U, I]
+    returns: [R]
+    precision: 3
+
+Hidden: [I]

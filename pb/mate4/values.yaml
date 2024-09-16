@@ -1,0 +1,23 @@
+nr1:
+    min: 15
+    max: 70
+    type: int
+
+nr2:
+    min: 5
+    max: 12
+    type: int
+
+nr3: [5,10,20, 12]
+
+nr4: [100, 200]
+
+
+F1:
+    funct: 'lambda n1, n2, n3, n4 : [n2 * n2, n1 + n2 *(n3 - n4 / n1) +n4 - n2]'
+    variables: [nr1, nr2, nr3, nr4]
+    returns: [nr7, rezultat]
+    precision: 3
+
+
+Hidden: [rezultat]

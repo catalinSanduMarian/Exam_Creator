@@ -27,4 +27,4 @@ do
     
 done
 rm -rf $QUEST
-cp ../quest_types .
+cp ../question_types.yaml .

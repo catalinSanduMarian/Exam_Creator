@@ -1,0 +1,17 @@
+main_type:
+    children: [mate, fizica, problema_grea]
+    problems: []
+
+mate:
+    children: []
+    problems: [mate1, mate2, intrebareMateGrea, mate5, mate6, mate7, mate8]
+
+fizica:
+    children: []
+    problems: [fizica1, fizica2]
+
+problema_grea:
+    children: []
+    problems: [mate4]
+
+

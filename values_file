@@ -1,11 +1,11 @@
-exactvalue: 6
+variabila1: 6
 
 intervalint:
     min: 15
     max: 70
     type: int
 
-intervalfloat:
+altinterval:
     min: 5
     max: 7
     type: float
@@ -15,7 +15,7 @@ valuelist: [1,2,34,56,100]
 
 F1:
     funct: 'lambda a, b, c, d : [1, a + b + c - d]'
-    variables: [intervalint, exactvalue, intervalfloat, valuelist]
+    variables: [intervalint, variabila1, altinterval, valuelist]
     returns: [aaa, answer1]
     precision: 2
 

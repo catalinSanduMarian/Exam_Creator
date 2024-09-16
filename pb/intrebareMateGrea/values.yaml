@@ -1,0 +1,22 @@
+numarul1:
+    min: 15
+    max: 70
+    type: int
+
+numarul2:
+    min: 5
+    max: 12
+    type: int
+
+
+numarul3: [2, 10, 5]
+numarul4: [3, 1, 4]
+
+
+F1:
+    funct: 'lambda a, b, c, d : [(a*b) - c * d + b - d]'
+    variables: [numarul1, numarul2, numarul3, numarul4]
+    returns: [numarul5]
+    precision: 3
+
+Hidden: []

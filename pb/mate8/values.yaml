@@ -1,0 +1,20 @@
+numarul1:
+    min: 3
+    max: 100
+    type: int
+
+numarul2:
+    min: 5
+    max: 12
+    type: float
+    precision: 3
+
+
+F1:
+    funct: 'lambda a, b : [(a*b)]'
+    variables: [numarul1, numarul2]
+    returns: [prod]
+    precision: 3
+
+
+Hidden: [prod]
